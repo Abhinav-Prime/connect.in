@@ -12,12 +12,14 @@ router.post("/signup", (req, res) => {
       req.body.password = hash;
       console.log(req.body.password);
       console.log(req.body);
-      
+
       const user = new User(req.body);
       console.log(user);
       User.create(user)
-      
-        .then(() => res.status(201).json({ message: "User created successfully" })) // Success response
+
+        .then(() =>
+          res.status(201).json({ message: "User created successfully" })// Success response
+        ) 
         .catch((error) => {
           console.error(error);
           res.status(500).json({ error: "Error creating user" }); // Error response
